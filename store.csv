@@ -1,11 +1,11 @@
-storeId,location,revenue
-001,"9546 Jefferson Street, Pitt Meadows, BC V3Y 2X7",25000
-002,"9275 Grand Street, L'Assomption, QC J5W 9B1",35000
-003,"17 Golf Drive, Monteregie-Est, QC J0J 8E6",42000
-004,"9171 Ocean St., Belledune, NB E8G 4K4",29000
-005,"5 W. Holly St., Yarmouth, NS B5A 2S6",38000
-006,"8260 Vale Ave., Grand-Mere, QC G9T 4P5",40000
-007,"8265 W. Gainsway Ave., Manotick, ON K4M 2A7",31000
-008,"40 Sage Court, Durham Bridge, NB E6C 8X9",27000
-009,"77 Hilltop Rd., Windsor, LB A2B 2B3",32000
-110,"196 New St., Sylvan Lake, AB T4S 4T8",36000
+storeId,storeName,managerId,location,revenue
+001,Aquatic Adventures,501,9546 Jefferson Street Vancouver BC V3Y2X7,25000
+002,Wave Rider Pro,502,9275 Grand Street Port Moody BC J5W9B1,35000
+003,Ocean Gear Outlet,503,17 Golf Drive Langley BC J0J8E6,42000
+004,Surf and Sail Emporium,504,9171 Ocean St Kelowna BC E8G4K4,29000
+005,Seaside Sports Supply,505,5 W. Holly St Victoria BC B5A2S6,38000
+006,Aqua Gear Galore,506,8260 Vale Ave Kamloops BC G9T4P5,40000
+007,Tidal Thrills,507,8265 W. Gainsway Ave Maple Ridge BC K4M2A7,31000
+008,Waves and Wetsuits,508,40 Sage Court North Vancouver BC E6C8X9,27000
+009,Splash Zone Gear,509,77 Hilltop Rd Saanich BC A2B2B3,32000
+110,Marine Sports Mart,510,196 New St New Westminster BC T4S4T8,36000
