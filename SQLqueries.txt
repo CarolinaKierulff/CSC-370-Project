@@ -4,3 +4,19 @@ SQL Queries for 370 Project - Store Management System
 CREATE DATABASE `storemanagerdb`; 
 
 USE `storemanagerdb`; 
+
+CREATE TABLE `customer`(
+    `customer_id` INT PRIMARY KEY,
+    `name` VARCHAR(180),
+    `birth_date` DATE,
+    `phone_number` VARCHAR(20),
+    `email` VARCHAR(180),
+    `address` VARCHAR(255)
+);
+
+LOAD DATA LOCAL INFILE 'customer.csv'
+INTO TABLE customer
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
