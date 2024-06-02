@@ -3,10 +3,10 @@ SQL Queries for 370 Project - Store Management System
 
 CREATE DATABASE `storemanagerdb`; 
 
-USE `storemanagerdb`; 
+USE `storemanagerdb`;
 
 CREATE TABLE `customer`(
-    `customer_id` INT,
+    `customer_id` INT PRIMARY KEY,
     `name` VARCHAR(180),
     `birth_date` DATE,
     `phone_number` VARCHAR(20),
@@ -14,8 +14,63 @@ CREATE TABLE `customer`(
     `address` VARCHAR(255)
 );
 
-LOAD DATA LOCAL INFILE 'customer.csv'
+LOAD DATA LOCAL INFILE '/path/customer.csv'
 INTO TABLE customer
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
+CREATE TABLE `item`(
+    `item_id` INT,
+    `item_name` VARCHAR(180),
+    `price` INT
+);
+
+LOAD DATA LOCAL INFILE '/path/item.csv'
+INTO TABLE `item`
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
+CREATE TABLE `store`(
+    `store_id` INT,
+    `store_name` VARCHAR(180),
+    `manager_id` INT,
+    `location` VARCHAR(250),
+    `revenue` INT
+);
+
+LOAD DATA LOCAL INFILE '/path/store.csv'
+INTO TABLE `store`
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
+CREATE TABLE `purchases`(
+    `purchase_id` INT,
+    `customer_id` VARCHAR(180),
+    `item_id` INT,
+    `date` DATE
+);
+
+LOAD DATA LOCAL INFILE '/path/purchases.csv'
+INTO TABLE `purchases`
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
+CREATE TABLE `stock`(
+    `store_id` INT,
+    `item_id` INT,
+    `quantity` INT
+);
+
+LOAD DATA LOCAL INFILE '/path/Uploads/stock.csv'
+INTO TABLE `stock`
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
