@@ -1,0 +1,4 @@
+SQL Queries for 370 Project - Store Management System   
+
+
+CREATE DATABASE `StoreManagerDB`; 
