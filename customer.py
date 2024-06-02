@@ -1,7 +1,11 @@
 
+
 import csv
 import random
 import sys
+from datetime import datetime, timedelta
+import time
+
 
 def gen_IDnumber(start= 10000, end= 15000):
     available_numbers = list(range(start, end + 1))
@@ -42,6 +46,16 @@ def gen_name():
     name = all_names[ran_name] + ' ' + all_surnames[ran_surname]
 
     return name
+
+def gen_birth_date():
+
+    today = datetime.today()
+    min_age_date = today - timedelta(days=18*365)
+    max_age_date = today - timedelta(days=75*365)
+    
+    random_date = min_age_date - timedelta(days=random.randint(0, (min_age_date - max_age_date).days))
+    
+    return random_date.date()
 
 
 def gen_phone():
@@ -105,10 +119,66 @@ def gen_email(full_name):
     return email    
 
 
+def gen_postal_code():
+    postal_code = 'V'
+    postal_code += str(random.randint(0, 9))
+    postal_code += random.choice([chr(i) for i in range(65, 91) if chr(i) not in 'DFIOQU'])
+    postal_code += str(random.randint(0, 9))
+    postal_code += random.choice([chr(i) for i in range(65, 91) if chr(i) not in 'DFIOQU'])  
+    postal_code += str(random.randint(0, 9))
+    
+    return postal_code
+
+
+def gen_address():
+
+    street_names = [
+    "Main", "High", "Oak", "Maple", "Cedar", "Elm", "Pine", "Walnut", "Willow", "Birch", "Ash", "Spruce", "Chestnut", "Poplar", "Fir", "Beech", 
+    "Sycamore", "Hickory", "Alder", "Aspen", "Redwood", "Sequoia", "Magnolia", "Dogwood", "Cypress", "Hawthorn", "Juniper", "Linden", "Olive", 
+    "Palm", "Peach", "Plum", "Apple", "Cherry", "Pear", "Grove", "Park", "Ridge", "Hill", "Valley", "Lake", "River", "Creek", "Brook", "Spring", 
+    "Summer", "Autumn", "Winter", "Sunset", "Sunrise", "Meadow", "Field", "Forest", "Woodland", "Glade", "Clearwater", "Lakeside", "Riverside", 
+    "Hillside", "Seaside", "Harbor", "Bay", "Beach", "Coast", "Shore", "Bluff", "Cliff", "Canyon", "Valleyview", "Mountainview", "Pinecrest", 
+    "Hillcrest", "Oakwood", "Elmwood", "Cedarwood", "Maplewood", "Redwood", "Hickorywood", "Birchwood", "Sprucewood", "Magnoliawood", "Dogwoodwood", 
+    "Cypresswood", "Sycamorewood", "Juniperwood", "Lindenwood", "Olivewood", "Palmwood", "Peachwood", "Plumwood", "Applewood", "Cherrywood", 
+    "Pearwood", "Grovewood", "Parkwood", "Ridgewood", "Hillwood", "Valleywood", "Lakewood", "Riverwood", "Aspenwood", "Pinewood", "Briarwood", 
+    "Brookside", "Chestnutwood", "Cottonwood", "Evergreen", "Fairview", "Greenwood", "Hidden", "Holly", "Laurel", "Lilac", "Locust", "Mountain", 
+    "Mulberry", "New", "North", "Oakridge", "Overlook", "Prairie", "Raven", "Shadow", "South", "Timber", "Tranquil", "Victoria", "Water", 
+    "Wildwood", "Woodbine", "Woodland", "Yellowstone", "York", "Windermere", "Kingswood", "Fairway", "Forestview", "Woodbridge", "Birchtree", 
+    "Misty", "Brookstone", "Foxglove", "Gardenia", "Glenview", "Harborview", "Highland", "Honeysuckle", "Horizon", "Independence", "Jackson", 
+    "Jefferson", "Liberty", "Madison", "Morning", "Pioneer", "Prairieview", "Prospect", "Raintree", "Rosewood", "Saddle", "Sage", "Summit", 
+    "Sycamoreview", "Trillium", "Tuscany", "Violet", "Whispering", "Williams", "Willowbrook", "Woodlandview", "Amber", "Arcadia", "Arlington", 
+    "Azalea", "Barberry", "Bayberry", "Bluebell", "Brentwood", "Briar", "Brookdale", "Canyonview", "Capitol", "Cedarview", "Colonial", 
+    "Concord", "Copper", "Crescent", "Daisy", "Edgewood", "Elderberry", "Elmview", "Emerald", "Falcon", "Garden", "Golden", "Grandview", 
+    "Hawthorne", "Hazel", "Heritage", "Hiddenview"
+    ]
+    
+    suffix = ["St", "Rd", "Ave", "Blvd", "Dr", "Ln", "Ct", "Pl", "Way", "Pkwy", "Sq"]
+
+    cities_bc = [
+    "Vancouver", "Surrey", "Burnaby", "Richmond", "Abbotsford",
+    "Coquitlam", "Kelowna", "Langley", "Saanich", "Delta",
+    "Kamloops", "Nanaimo", "Victoria", "Chilliwack", "Maple Ridge",
+    "New Westminster", "Port Coquitlam", "North Vancouver", "West Vancouver", "Penticton",
+    "Port Moody", "Prince George", "Vernon", "Courtenay", "Campbell River",
+    "Fort St. John", "Pitt Meadows", "Dawson Creek", "Squamish", "Cranbrook"
+    ]
+
+    postal_code = gen_postal_code()
+
+    ran_number = random.randint(299, 9999)
+    ran_street = random.randint(1, len(street_names) - 1)
+    ran_suffix = random.randint(1, len(suffix) - 1)
+    ran_city = random.randint(1, len(cities_bc) - 1)
+
+    address = f"{ran_number} {street_names[ran_street]} {suffix[ran_suffix]} {cities_bc[ran_city]} BC {postal_code}"
+
+    return address 
+    
+
 def writes_csv(arg_amount) -> None:
     with open('customer.csv', 'w', newline='') as csvfile:
         
-        header = ['customerId', 'name', 'phoneNumber','email']
+        header = ['customerId','name','birthDate','phoneNumber','email','address']
         writer = csv.writer(csvfile)
         
         writer.writerow(header)            #writes the header
@@ -116,9 +186,11 @@ def writes_csv(arg_amount) -> None:
         for i in range(arg_amount):
             customer_id = str(gen_customerID())
             full_name = gen_name()
+            birth_date = gen_birth_date()
             phone_number = gen_phone()
             email = gen_email(full_name)
-            line = [customer_id,full_name,phone_number,email]                 #writes the output data
+            address = gen_address()
+            line = [customer_id,full_name,birth_date,phone_number,email,address]                 #writes the output data
             writer.writerow(line)
 
     return
@@ -137,11 +209,15 @@ def main():
     try:
         arg_amount = int(sys.argv[1])
         if arg_amount < 1 or arg_amount > 20000:
-            print('Amount invalid: Please enter number between 1 and 20000.')
+            print('Amount invalid: Please enter a number between 1 and 20000.')
         else:
+            start_time = time.time()  #record start time
             writes_csv(arg_amount)
+            end_time = time.time()    #record end time
+            execution_time = end_time - start_time
+            print(f"Generated {arg_amount} customers in {execution_time:.2f} seconds.")
 
-    except ValueError:
+    except (ValueError, IndexError):
         print('Amount invalid: Please enter a whole number between 1 and 20000.')
 
 
