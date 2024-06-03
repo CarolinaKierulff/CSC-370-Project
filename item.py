@@ -54,12 +54,13 @@ def writes_csv(arg_amount) -> None:
                   'Black','White','Gray','Cyan','Magenta','Lime','Teal']
 
         for i in range(arg_amount):
+            ran_color = random.randint(0, 11)
             for j in range(3):    
-                ran_color = random.randint(0, 13)
                 item_id = str(gen_itemID()) 
                 name = get_item_info(i)
                 price = get_item_info(i)
                 line = [item_id,name[0] + ' ' + colors[ran_color],price[1]] 
+                ran_color = ran_color + 1
                 writer.writerow(line)
     return
 
