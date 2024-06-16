@@ -23,7 +23,6 @@ def gen_transactionID():
 
 
 def gen_date():
-
     today = datetime.today().date()
     
     start_date = today - timedelta(days=12*30)  # Approximating 30 days per month
@@ -31,7 +30,7 @@ def gen_date():
     
     random_date = start_date + timedelta(days=random.randint(0, (end_date - start_date).days))
     
-    return random_date 
+    return random_date.strftime("%Y-%m-%d")
     
 
 def get_itemID():
@@ -61,7 +60,7 @@ def get_customerID():
 def writes_csv(arg_amount) -> None:
     with open('purchases.csv', 'w', newline='') as csvfile:
         
-        header = ['purchaseId','customersId','itemID','storeId','date']
+        header = ['purchaseId','customersId','itemID','storeID','date']
         writer = csv.writer(csvfile)
         
         writer.writerow(header)            #writes the header
