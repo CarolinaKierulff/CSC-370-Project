@@ -61,22 +61,24 @@ def get_customerID():
 def writes_csv(arg_amount) -> None:
     with open('purchases.csv', 'w', newline='') as csvfile:
         
-        header = ['purchaseId','customersId','itemID','date']
+        header = ['purchaseId','customersId','itemID','storeId','date']
         writer = csv.writer(csvfile)
         
         writer.writerow(header)            #writes the header
 
         items_id = get_itemID()
         customers_id = get_customerID()
+        store_ids = ['001','002','003','004','005','006','007','008','009','010']
 
         for i in range(arg_amount):
             quantity =  random.randint(1, 5)
             purchase_id = str(gen_transactionID())
             ran_cus = random.randint(0, 999)
             date = gen_date()
+            ran_store = random.randint(0, 9)
             for j in range(quantity):  
                 ran_item = random.randint(0, 179)
-                line = [purchase_id,customers_id[ran_cus],items_id[ran_item],date]                 #writes the output data
+                line = [purchase_id,customers_id[ran_cus],items_id[ran_item],store_ids[ran_store],date]                 #writes the output data
                 writer.writerow(line)   
 
     return
@@ -86,7 +88,7 @@ def main():
     
     try:
         arg_amount = int(sys.argv[1])
-        if arg_amount < 1 or arg_amount > 180:
+        if arg_amount < 1 or arg_amount > 20000:
             print('Amount invalid: Please enter number between 1 and 20000.')
         else:
             writes_csv(arg_amount)
