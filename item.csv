@@ -1,181 +1,181 @@
-itemId,name,price
-9555,Kayak Yellow,800
-5416,Kayak Purple,800
-5879,Kayak Orange,800
-1771,Stand-Up Paddleboard Black,700
-2158,Stand-Up Paddleboard White,700
-1761,Stand-Up Paddleboard Gray,700
-8378,Wetsuit Gray,250
-7396,Wetsuit Cyan,250
-5748,Wetsuit Magenta,250
-2920,Snorkeling Gear Magenta,100
-3273,Snorkeling Gear Lime,100
-1620,Snorkeling Gear Teal,100
-3050,Surfboard Yellow,500
-7133,Surfboard Purple,500
-7281,Surfboard Orange,500
-9218,Life Jacket Blue,80
-3103,Life Jacket Green,80
-3481,Life Jacket Yellow,80
-8127,Diving Mask and Fin Brown,150
-6965,Diving Mask and Fin Black,150
-7308,Diving Mask and Fin White,150
-6432,Waterproof Dry Bag Pink,50
-5600,Waterproof Dry Bag Brown,50
-8228,Waterproof Dry Bag Black,50
-3380,Inflatable Raft Purple,300
-1205,Inflatable Raft Orange,300
-1904,Inflatable Raft Pink,300
-7587,Fishing Gear Gray,200
-1112,Fishing Gear Cyan,200
-4524,Fishing Gear Magenta,200
-4838,Towable Tube Blue,250
-9192,Towable Tube Green,250
-4562,Towable Tube Yellow,250
-6050,Water Ski Blue,400
-2371,Water Ski Green,400
-1783,Water Ski Yellow,400
-3363,Wakeboard Green,400
-6655,Wakeboard Yellow,400
-8316,Wakeboard Purple,400
-7495,Kayak Paddle Purple,100
-4499,Kayak Paddle Orange,100
-7767,Kayak Paddle Pink,100
-8614,Swim Goggle Orange,30
-7843,Swim Goggle Pink,30
-2851,Swim Goggle Brown,30
-9646,Scuba Tank Yellow,250
-3208,Scuba Tank Purple,250
-9359,Scuba Tank Orange,250
-5502,Underwater Camera Brown,350
-5127,Underwater Camera Black,350
-9870,Underwater Camera White,350
-4217,Personal Flotation Device Black,80
-7777,Personal Flotation Device White,80
-2075,Personal Flotation Device Gray,80
-5412,Water Shoe Gray,50
-4866,Water Shoe Cyan,50
-2243,Water Shoe Magenta,50
-7247,Hydration Pack Magenta,60
-7912,Hydration Pack Lime,60
-3298,Hydration Pack Teal,60
-9926,Sailing Equipment Yellow,500
-6523,Sailing Equipment Purple,500
-4644,Sailing Equipment Orange,500
-2212,Jet Ski Gray,10000
-4655,Jet Ski Cyan,10000
-1689,Jet Ski Magenta,10000
-1858,Bodyboard Orange,100
-5313,Bodyboard Pink,100
-8888,Bodyboard Brown,100
-5695,Waterproof Watch Black,150
-8198,Waterproof Watch White,150
-4531,Waterproof Watch Gray,150
-4429,Paddleboard Leash Gray,30
-4220,Paddleboard Leash Cyan,30
-9895,Paddleboard Leash Magenta,30
-9402,Underwater Scooter Orange,1000
-2548,Underwater Scooter Pink,1000
-6505,Underwater Scooter Brown,1000
-4191,Swim Fin Magenta,50
-7744,Swim Fin Lime,50
-5950,Swim Fin Teal,50
-2744,Waterproof Phone Case White,20
-2088,Waterproof Phone Case Gray,20
-5925,Waterproof Phone Case Cyan,20
-7390,Beach Tent Orange,100
-4722,Beach Tent Pink,100
-5612,Beach Tent Brown,100
-9885,Inflatable Kayak White,500
-3709,Inflatable Kayak Gray,500
-4242,Inflatable Kayak Cyan,500
-2301,Marine GPS System Gray,500
-8750,Marine GPS System Cyan,500
-5041,Marine GPS System Magenta,500
-5584,Spearfishing Gear Green,300
-7305,Spearfishing Gear Yellow,300
-6525,Spearfishing Gear Purple,300
-2436,Sun Protection Clothing Cyan,50
-2380,Sun Protection Clothing Magenta,50
-7368,Sun Protection Clothing Lime,50
-7222,Boating Accessory Pink,100
-5633,Boating Accessory Brown,100
-1987,Boating Accessory Black,100
-9204,Marine Binocular White,150
-4805,Marine Binocular Gray,150
-2736,Marine Binocular Cyan,150
-6616,Waterproof Backpack Magenta,80
-7553,Waterproof Backpack Lime,80
-8639,Waterproof Backpack Teal,80
-4831,Dock Line and Fender Purple,50
-6417,Dock Line and Fender Orange,50
-5848,Dock Line and Fender Pink,50
-9447,Marine Safety Equipment Brown,100
-6516,Marine Safety Equipment Black,100
-2280,Marine Safety Equipment White,100
-3203,Fish Finder White,400
-2707,Fish Finder Gray,400
-1630,Fish Finder Cyan,400
-3250,Waterproof Bluetooth Speaker White,100
-4865,Waterproof Bluetooth Speaker Gray,100
-9557,Waterproof Bluetooth Speaker Cyan,100
-8722,Kiteboarding Equipment Magenta,800
-5244,Kiteboarding Equipment Lime,800
-5577,Kiteboarding Equipment Teal,800
-6963,Floating Cooler Yellow,50
-7202,Floating Cooler Purple,50
-7377,Floating Cooler Orange,50
-8894,Swim Cap Gray,10
-8179,Swim Cap Cyan,10
-1153,Swim Cap Magenta,10
-3462,Wet Bag Cyan,30
-4136,Wet Bag Magenta,30
-4520,Wet Bag Lime,30
-7429,Marine Radio Orange,150
-7683,Marine Radio Pink,150
-2013,Marine Radio Brown,150
-1743,Fishing Kayak Gray,800
-5106,Fishing Kayak Cyan,800
-2354,Fishing Kayak Magenta,800
-3559,Boat Cover Orange,200
-6597,Boat Cover Pink,200
-7373,Boat Cover Brown,200
-2787,Boat Maintenance Kit Magenta,50
-6890,Boat Maintenance Kit Lime,50
-8370,Boat Maintenance Kit Teal,50
-3307,Snorkel Vest White,50
-3992,Snorkel Vest Gray,50
-6713,Snorkel Vest Cyan,50
-1879,Underwater Flashlight Magenta,80
-4376,Underwater Flashlight Lime,80
-7032,Underwater Flashlight Teal,80
-2315,Kayak Cart Magenta,100
-7138,Kayak Cart Lime,100
-7737,Kayak Cart Teal,100
-8664,Boat Seat and Cushion White,150
-7925,Boat Seat and Cushion Gray,150
-2108,Boat Seat and Cushion Cyan,150
-6037,Tow Rope Brown,50
-3190,Tow Rope Black,50
-7872,Tow Rope White,50
-9511,Waterproof Notebook Blue,20
-3627,Waterproof Notebook Green,20
-1880,Waterproof Notebook Yellow,20
-2821,Oar Lock and Rowing Accessory Green,50
-4727,Oar Lock and Rowing Accessory Yellow,50
-5016,Oar Lock and Rowing Accessory Purple,50
-9845,Floating Keychain Gray,10
-9625,Floating Keychain Cyan,10
-7059,Floating Keychain Magenta,10
-4906,Dock Cleat Pink,20
-1717,Dock Cleat Brown,20
-8287,Dock Cleat Black,20
-3815,Deck Shoe Magenta,80
-4939,Deck Shoe Lime,80
-1306,Deck Shoe Teal,80
-9280,Pontoon Boat Accessory Brown,200
-5830,Pontoon Boat Accessory Black,200
-3496,Pontoon Boat Accessory White,200
-4137,Jet Ski Cover Orange,100
-9491,Jet Ski Cover Pink,100
-6902,Jet Ski Cover Brown,100
+itemId,name,price,cost
+3489,Kayak Gray,800,719.82
+7096,Kayak Cyan,800,719.82
+8063,Kayak Magenta,800,719.82
+4715,Stand-Up Paddleboard Black,700,624.29
+1716,Stand-Up Paddleboard White,700,624.29
+7738,Stand-Up Paddleboard Gray,700,624.29
+5064,Wetsuit Magenta,250,224.09
+6206,Wetsuit Lime,250,224.09
+3356,Wetsuit Teal,250,224.09
+9424,Snorkeling Gear Magenta,100,93.77
+9766,Snorkeling Gear Lime,100,93.77
+9724,Snorkeling Gear Teal,100,93.77
+2459,Surfboard Black,500,448.97
+9805,Surfboard White,500,448.97
+2779,Surfboard Gray,500,448.97
+1602,Life Jacket Purple,80,71.94
+2571,Life Jacket Orange,80,71.94
+5734,Life Jacket Pink,80,71.94
+6763,Diving Mask and Fin Orange,150,136.5
+7630,Diving Mask and Fin Pink,150,136.5
+1021,Diving Mask and Fin Brown,150,136.5
+7306,Waterproof Dry Bag Gray,50,46.25
+9074,Waterproof Dry Bag Cyan,50,46.25
+8739,Waterproof Dry Bag Magenta,50,46.25
+6118,Inflatable Raft Blue,300,278.95
+9817,Inflatable Raft Green,300,278.95
+1088,Inflatable Raft Yellow,300,278.95
+3893,Fishing Gear Pink,200,186.65
+7291,Fishing Gear Brown,200,186.65
+5167,Fishing Gear Black,200,186.65
+6032,Towable Tube Pink,250,230.98
+9918,Towable Tube Brown,250,230.98
+2105,Towable Tube Black,250,230.98
+2634,Water Ski Green,400,366.8
+1393,Water Ski Yellow,400,366.8
+7867,Water Ski Purple,400,366.8
+3509,Wakeboard Gray,400,342.65
+9479,Wakeboard Cyan,400,342.65
+1611,Wakeboard Magenta,400,342.65
+7777,Kayak Paddle Gray,100,91.89
+1441,Kayak Paddle Cyan,100,91.89
+9595,Kayak Paddle Magenta,100,91.89
+1719,Swim Goggle Gray,30,28.04
+4330,Swim Goggle Cyan,30,28.04
+8884,Swim Goggle Magenta,30,28.04
+1379,Scuba Tank Purple,250,222.69
+7654,Scuba Tank Orange,250,222.69
+3127,Scuba Tank Pink,250,222.69
+7157,Underwater Camera Gray,350,300.57
+9956,Underwater Camera Cyan,350,300.57
+8769,Underwater Camera Magenta,350,300.57
+3641,Personal Flotation Device Yellow,80,74.28
+4332,Personal Flotation Device Purple,80,74.28
+1986,Personal Flotation Device Orange,80,74.28
+8558,Water Shoe Brown,50,43.77
+4902,Water Shoe Black,50,43.77
+6404,Water Shoe White,50,43.77
+2231,Hydration Pack Cyan,60,52.95
+6523,Hydration Pack Magenta,60,52.95
+1849,Hydration Pack Lime,60,52.95
+6105,Sailing Equipment Yellow,500,465.24
+1914,Sailing Equipment Purple,500,465.24
+8602,Sailing Equipment Orange,500,465.24
+6441,Jet Ski White,10000,8692.0
+4369,Jet Ski Gray,10000,8692.0
+1421,Jet Ski Cyan,10000,8692.0
+8517,Bodyboard Yellow,100,91.96
+1299,Bodyboard Purple,100,91.96
+6575,Bodyboard Orange,100,91.96
+9908,Waterproof Watch Purple,150,132.79
+9168,Waterproof Watch Orange,150,132.79
+2962,Waterproof Watch Pink,150,132.79
+8604,Paddleboard Leash Orange,30,28.29
+2326,Paddleboard Leash Pink,30,28.29
+3307,Paddleboard Leash Brown,30,28.29
+2111,Underwater Scooter White,1000,945.16
+4701,Underwater Scooter Gray,1000,945.16
+9741,Underwater Scooter Cyan,1000,945.16
+7385,Swim Fin Green,50,44.38
+4850,Swim Fin Yellow,50,44.38
+2795,Swim Fin Purple,50,44.38
+5353,Waterproof Phone Case Green,20,18.85
+5938,Waterproof Phone Case Yellow,20,18.85
+3829,Waterproof Phone Case Purple,20,18.85
+7231,Beach Tent Gray,100,89.87
+9433,Beach Tent Cyan,100,89.87
+9937,Beach Tent Magenta,100,89.87
+6436,Inflatable Kayak Yellow,500,429.87
+4773,Inflatable Kayak Purple,500,429.87
+1566,Inflatable Kayak Orange,500,429.87
+6422,Marine GPS System Gray,500,454.0
+2699,Marine GPS System Cyan,500,454.0
+2957,Marine GPS System Magenta,500,454.0
+3336,Spearfishing Gear Black,300,272.46
+5619,Spearfishing Gear White,300,272.46
+7657,Spearfishing Gear Gray,300,272.46
+2369,Sun Protection Clothing Blue,50,44.16
+9338,Sun Protection Clothing Green,50,44.16
+5614,Sun Protection Clothing Yellow,50,44.16
+2517,Boating Accessory Cyan,100,91.02
+8262,Boating Accessory Magenta,100,91.02
+3891,Boating Accessory Lime,100,91.02
+1085,Marine Binocular Brown,150,132.24
+3323,Marine Binocular Black,150,132.24
+9103,Marine Binocular White,150,132.24
+2010,Waterproof Backpack Yellow,80,69.44
+9511,Waterproof Backpack Purple,80,69.44
+9484,Waterproof Backpack Orange,80,69.44
+7894,Dock Line and Fender Cyan,50,45.2
+2945,Dock Line and Fender Magenta,50,45.2
+8029,Dock Line and Fender Lime,50,45.2
+4158,Marine Safety Equipment Blue,100,90.13
+1029,Marine Safety Equipment Green,100,90.13
+9832,Marine Safety Equipment Yellow,100,90.13
+6692,Fish Finder Purple,400,360.4
+5769,Fish Finder Orange,400,360.4
+5794,Fish Finder Pink,400,360.4
+9628,Waterproof Bluetooth Speaker Pink,100,94.36
+3723,Waterproof Bluetooth Speaker Brown,100,94.36
+5305,Waterproof Bluetooth Speaker Black,100,94.36
+2468,Kiteboarding Equipment Purple,800,696.75
+3166,Kiteboarding Equipment Orange,800,696.75
+6940,Kiteboarding Equipment Pink,800,696.75
+3874,Floating Cooler Black,50,44.31
+6666,Floating Cooler White,50,44.31
+4404,Floating Cooler Gray,50,44.31
+1153,Swim Cap Gray,10,9.48
+5814,Swim Cap Cyan,10,9.48
+2015,Swim Cap Magenta,10,9.48
+8434,Wet Bag Magenta,30,28.24
+6165,Wet Bag Lime,30,28.24
+6864,Wet Bag Teal,30,28.24
+1101,Marine Radio White,150,134.0
+3761,Marine Radio Gray,150,134.0
+4314,Marine Radio Cyan,150,134.0
+8939,Fishing Kayak Black,800,707.2
+2202,Fishing Kayak White,800,707.2
+5550,Fishing Kayak Gray,800,707.2
+9675,Boat Cover Magenta,200,170.91
+1787,Boat Cover Lime,200,170.91
+4785,Boat Cover Teal,200,170.91
+6424,Boat Maintenance Kit Gray,50,45.15
+7681,Boat Maintenance Kit Cyan,50,45.15
+1012,Boat Maintenance Kit Magenta,50,45.15
+9878,Snorkel Vest Brown,50,46.2
+6908,Snorkel Vest Black,50,46.2
+3968,Snorkel Vest White,50,46.2
+2713,Underwater Flashlight Cyan,80,75.42
+8300,Underwater Flashlight Magenta,80,75.42
+2424,Underwater Flashlight Lime,80,75.42
+6743,Kayak Cart Blue,100,92.1
+9155,Kayak Cart Green,100,92.1
+5153,Kayak Cart Yellow,100,92.1
+9856,Boat Seat and Cushion White,150,141.86
+8573,Boat Seat and Cushion Gray,150,141.86
+2970,Boat Seat and Cushion Cyan,150,141.86
+4021,Tow Rope Orange,50,43.36
+9249,Tow Rope Pink,50,43.36
+4978,Tow Rope Brown,50,43.36
+3039,Waterproof Notebook Magenta,20,17.73
+7298,Waterproof Notebook Lime,20,17.73
+3846,Waterproof Notebook Teal,20,17.73
+5868,Oar Lock and Rowing Accessory Orange,50,43.43
+7195,Oar Lock and Rowing Accessory Pink,50,43.43
+4359,Oar Lock and Rowing Accessory Brown,50,43.43
+4483,Floating Keychain Yellow,10,8.85
+8703,Floating Keychain Purple,10,8.85
+8610,Floating Keychain Orange,10,8.85
+7026,Dock Cleat Green,20,17.14
+9473,Dock Cleat Yellow,20,17.14
+2264,Dock Cleat Purple,20,17.14
+3870,Deck Shoe Cyan,80,70.89
+3170,Deck Shoe Magenta,80,70.89
+8666,Deck Shoe Lime,80,70.89
+6610,Pontoon Boat Accessory Cyan,200,179.61
+5478,Pontoon Boat Accessory Magenta,200,179.61
+3770,Pontoon Boat Accessory Lime,200,179.61
+8104,Jet Ski Cover White,100,88.35
+8841,Jet Ski Cover Gray,100,88.35
+4299,Jet Ski Cover Cyan,100,88.35
