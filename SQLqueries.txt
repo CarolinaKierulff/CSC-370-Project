@@ -1,12 +1,16 @@
 SQL Queries for 370 Project - Store Management System   
 
 
+
+CREATING THE TABLE:
+--------------------------------------------------------------------------------------------------------
+
 CREATE DATABASE `storemanagerdb`; 
 
 USE `storemanagerdb`;
 
 CREATE TABLE `customer`(
-    `customer_id` INT PRIMARY KEY,
+    `customer_id` INT,
     `name` VARCHAR(180),
     `birth_date` DATE,
     `phone_number` VARCHAR(20),
@@ -24,7 +28,8 @@ IGNORE 1 LINES;
 CREATE TABLE `item`(
     `item_id` INT,
     `item_name` VARCHAR(180),
-    `price` INT
+    `price` INT,
+    `cost` FLOAT
 );
 
 LOAD DATA LOCAL INFILE '/path/item.csv'
@@ -51,7 +56,7 @@ IGNORE 1 LINES;
 
 CREATE TABLE `purchases`(
     `purchase_id` INT,
-    `customer_id` VARCHAR(180),
+    `customer_id` INT,
     `item_id` INT,
     `date` DATE
 );
@@ -75,3 +80,184 @@ FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
+
+
+
+GENERATING KEYS:
+--------------------------------------------------------------------------------------------------------
+
+
+// Primary Keys::
+
+ALTER TABLE `item`
+ADD PRIMARY KEY (`item_id`);
+
+ALTER TABLE `customer`
+ADD PRIMARY KEY (`customer_id`);
+
+ALTER TABLE `store`
+ADD PRIMARY KEY (`store_id`);
+
+
+// Foreign Keys::
+
+   // for purchases
+
+ALTER TABLE `purchases`
+ADD CONSTRAINT `fk_customer_id`
+FOREIGN KEY (`customer_id`) 
+REFERENCES `customer`(`customer_id`);
+
+ALTER TABLE `purchases`
+ADD CONSTRAINT `fk_item_id`
+FOREIGN KEY (`item_id`) 
+REFERENCES `item`(`item_id`);
+
+ALTER TABLE `purchases`
+ADD CONSTRAINT `fk_store_id`
+FOREIGN KEY (`store_id`) 
+REFERENCES `store`(`store_id`);
+
+   // for stocks
+
+ALTER TABLE `stock`
+ADD CONSTRAINT `fk_store_id_stock`
+FOREIGN KEY (`store_id`) 
+REFERENCES `store`(`store_id`);
+
+ALTER TABLE `stock`
+ADD CONSTRAINT `fk_item_id_stock`
+FOREIGN KEY (`item_id`) 
+REFERENCES `item`(`item_id`);
+
+
+
+COMPLEX QUERIES FOR OUR SYSTEM:
+--------------------------------------------------------------------------------------------------------
+
+
+// Top selling products:: 
+
+SELECT `item_name`, `price`, `cost`, (price - cost) AS 'profit'
+FROM `item`
+ORDER BY profit DESC
+LIMIT 5;
+
+
+// Highest-yielding purchases:: 
+
+SELECT `purchases`.`purchase_id`,  
+    SUM(`item`.`price` - `item`.`cost`) AS total_profit
+FROM `purchases`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+GROUP BY `purchases`.`purchase_id`
+ORDER BY total_profit DESC
+LIMIT 5;
+
+
+// Highest-yielding customers:: 
+
+SELECT `customer`.`customer_id`, `customer`.`name`, 
+    SUM(`item`.`price` - `item`.`cost`) AS total_spent
+FROM `customer`
+JOIN `purchases` ON `customer`.`customer_id` = `purchases`.`customer_id`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+GROUP BY `customer`.`customer_id`, `customer`.`name`
+ORDER BY total_spent DESC
+LIMIT 5;
+
+// Calculate store revenue (by store_id)::
+
+SELECT `store`.`store_id`, `store`.`store_name`,
+    SUM(`item`.`price`) AS total_revenue
+FROM `store`
+JOIN `purchases` ON `store`.`store_id` = `purchases`.`store_id`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+WHERE `store`.`store_id` = 1
+GROUP BY `store`.`store_id`, `store`.`store_name`;
+
+
+// Monthly sales trends::
+
+SELECT
+    YEAR(`purchases`.`date`) AS sales_year,
+    MONTH(`purchases`.`date`) AS sales_month,
+    SUM(`item`.price) AS total_sales
+FROM `purchases`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+GROUP BY YEAR(`purchases`.`date`), MONTH(`purchases`.`date`)
+ORDER BY total_sales DESC;
+
+
+// Highest-yielding customers by date:: 
+
+SELECT `customer`.`customer_id`, `customer`.`name`, 
+    SUM(`item`.`price` - `item`.`cost`) AS total_spent
+FROM `customer`
+JOIN `purchases` ON `customer`.`customer_id` = `purchases`.`customer_id`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+WHERE `purchases`.`date` BETWEEN '2023-01-01' AND '2023-12-31'
+GROUP BY `customer`.`customer_id`, `customer`.`name`
+ORDER BY total_spent DESC
+LIMIT 5;
+
+
+// Looking up a customer purchase history (by customer id)::
+
+SELECT `purchases`.`purchase_id`, `purchases`.`purchase_date`,
+    SUM(`item`.`price`) AS total_price
+FROM `purchases`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+JOIN `customer` ON `purchases`.`customer_id` = `customer`.`customer_id`
+WHERE `customer`.`customer_id` = ?
+GROUP BY `purchases`.`purchase_id`, `purchases`.`purchase_date`
+ORDER BY `purchases`.`purchase_date` DESC;
+
+
+// Looking customers that spend over a certain amount::
+
+SELECT `customer`.`customer_id`, `customer`.`name`, 
+    SUM(`item`.`price`) AS total_spent
+FROM `customer`
+JOIN `purchases` ON `customer`.`customer_id` = `purchases`.`customer_id`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+GROUP BY `customer`.`customer_id`, `customer`.`name`
+HAVING SUM(`item`.`price`) > 1000
+ORDER BY total_spent DESC;
+
+
+SUB QUERIES FOR OUR SYSTEM:
+--------------------------------------------------------------------------------------------------------
+
+
+// Customers who have made purchases in a specific store::
+
+SELECT `customer_id`, `name`
+FROM `customer` 
+WHERE `customer`.`customer_id` IN (
+    SELECT `purchases`.`customer_id`
+    FROM `purchases` 
+    WHERE `purchases`.`store_id` = 1
+);
+
+
+// Average order value::
+
+SELECT AVG(order_total) AS average_order_value
+FROM (
+    SELECT `purchases`.`purchase_id`, SUM(`item`.`price`) AS order_total
+    FROM `purchases`
+    JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+    GROUP BY `purchases`.`purchase_id`
+) AS order_totals;
+
+
+// Customers who have never made a purchase::
+
+SELECT `customer_id`, `name`
+FROM `customer`
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM `purchases`
+    WHERE `purchases`.`customer_id` = `customer`.`customer_id`
+);
