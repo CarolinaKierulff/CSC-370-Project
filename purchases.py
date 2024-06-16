@@ -26,7 +26,7 @@ def gen_date():
 
     today = datetime.today().date()
     
-    start_date = today - timedelta(days=6*30)  # Approximating 30 days per month
+    start_date = today - timedelta(days=12*30)  # Approximating 30 days per month
     end_date = today
     
     random_date = start_date + timedelta(days=random.randint(0, (end_date - start_date).days))
@@ -72,10 +72,10 @@ def writes_csv(arg_amount) -> None:
         for i in range(arg_amount):
             quantity =  random.randint(1, 5)
             purchase_id = str(gen_transactionID())
+            ran_cus = random.randint(0, 999)
             date = gen_date()
             for j in range(quantity):  
                 ran_item = random.randint(0, 179)
-                ran_cus = random.randint(0, 999)
                 line = [purchase_id,customers_id[ran_cus],items_id[ran_item],date]                 #writes the output data
                 writer.writerow(line)   
 
@@ -86,7 +86,7 @@ def main():
     
     try:
         arg_amount = int(sys.argv[1])
-        if arg_amount < 1 or arg_amount > 1000:
+        if arg_amount < 1 or arg_amount > 180:
             print('Amount invalid: Please enter number between 1 and 20000.')
         else:
             writes_csv(arg_amount)
