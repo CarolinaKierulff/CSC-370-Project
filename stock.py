@@ -35,7 +35,7 @@ def writes_csv() -> None:
         writer.writerow(header)            #writes the header
 
         items_id = get_itemID()
-        store_id = get_storeID()
+        store_id = ['001','002','003','004','005','006','007','008','009','010']
 
         for i in range(len(store_id)):
             store = store_id[i]
