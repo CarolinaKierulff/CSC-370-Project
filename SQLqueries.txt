@@ -261,3 +261,18 @@ WHERE NOT EXISTS (
     FROM `purchases`
     WHERE `purchases`.`customer_id` = `customer`.`customer_id`
 );
+
+DATA MANIPULATION
+-----------------------------------------------------------------------------------------------------------
+INSERT INTO store ( 
+    store_id,  
+    store_name, 
+    manager_id, 
+    location, 
+    revenue) 
+    values( 
+    20, 
+    'Splash Zone Gear', 
+    511,
+    '77 Hilltop Rd Saanich BC A2B2B3', 
+    32000);
