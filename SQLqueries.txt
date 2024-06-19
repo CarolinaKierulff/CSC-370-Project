@@ -264,6 +264,9 @@ WHERE NOT EXISTS (
 
 DATA MANIPULATION
 -----------------------------------------------------------------------------------------------------------
+
+// Adding a store to the database
+
 INSERT INTO store ( 
     store_id,  
     store_name, 
