@@ -294,3 +294,8 @@ values( 12569,
 '(250)8831108', 
 'helloword@gmail.com', 
 '459 Vector Road Kelowna BC V5P2A7');
+
+// Deleting a customer from the database
+
+DELETE FROM customer
+    WHERE customer_id = 12569;
