@@ -279,3 +279,18 @@ INSERT INTO store (
     511,
     '89 Hilltop Rd Saanich BC A2B2B3', 
     33000);
+
+// Adding a customer to the database
+
+INSERT INTO customer ( 
+customer_id, name, 
+birth_date, 
+phone_number, 
+email, 
+address) 
+values( 12569, 
+'Larry Peters', 
+'2001-07-01', 
+'(250)8831108', 
+'helloword@gmail.com', 
+'459 Vector Road Kelowna BC V5P2A7');
