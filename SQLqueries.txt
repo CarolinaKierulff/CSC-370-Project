@@ -130,6 +130,21 @@ ADD CONSTRAINT `fk_item_id_stock`
 FOREIGN KEY (`item_id`) 
 REFERENCES `item`(`item_id`);
 
+DML(INSERT, UPDATE, DELETE) QUERIES:
+--------------------------------------------------------------------------------------------------------
+
+ //INSERT
+
+INSERT INTO `customer` (customer_id, name, birth_date, phone_number, email, address)
+VALUES (1, 'Harry Goner', '1990-01-01', '123-456-7890', 'harry.g@example.com', '123 Elms Street');
+
+ //UPDATE
+
+UPDATE `customer`
+SET `name` = 'Maria Lamb'
+WHERE `customer_id` = 11907;
+        
+
 
 
 COMPLEX QUERIES FOR OUR SYSTEM:
