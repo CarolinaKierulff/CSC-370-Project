@@ -272,7 +272,7 @@ INSERT INTO store (
     revenue) 
     values( 
     20, 
-    'Splash Zone Gear', 
+    'Water Equipment Galore', 
     511,
-    '77 Hilltop Rd Saanich BC A2B2B3', 
-    32000);
+    '89 Hilltop Rd Saanich BC A2B2B3', 
+    33000);
