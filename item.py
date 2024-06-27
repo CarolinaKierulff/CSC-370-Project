@@ -3,24 +3,14 @@ import csv
 import random
 import sys
 
+# global varible
 
-def gen_number(start= 1000, end= 9999):
-    available_numbers = list(range(start, end + 1))
-    random.shuffle(available_numbers)
-    for number in available_numbers:
-        yield number
-
-
-cID = gen_number()
+count = 999
 
 def gen_itemID():
-    global cID
-    try:
-        line = next(cID)
-        return line
-    except StopIteration:
-        # if all numbers are exhausted
-        return "No more unique customer IDs available."
+    global count
+    count += 1
+    return count
 
 def get_item_info(index):
 
