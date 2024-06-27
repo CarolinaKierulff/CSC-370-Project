@@ -7,22 +7,12 @@ from datetime import datetime, timedelta
 import time
 
 
-def gen_IDnumber(start= 10000, end= 15000):
-    available_numbers = list(range(start, end + 1))
-    random.shuffle(available_numbers)
-    for number in available_numbers:
-        yield number
-
-cID = gen_IDnumber()
+count = 9999
 
 def gen_customerID():
-    global cID
-    try:
-        line = next(cID)
-        return line
-    except StopIteration:
-        # if all numbers are exhausted
-        return "No more unique customer IDs available."
+    global count
+    count += 1
+    return count
 
 
 def get_names(filename):
