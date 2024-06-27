@@ -57,6 +57,7 @@ CREATE TABLE `purchases`(
     `purchase_id` INT,
     `customer_id` INT,
     `item_id` INT,
+    `store_id` INT,
     `date` DATE
 );
 
