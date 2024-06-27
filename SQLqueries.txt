@@ -43,8 +43,7 @@ CREATE TABLE `store`(
     `store_id` INT,
     `store_name` VARCHAR(180),
     `manager_id` INT,
-    `location` VARCHAR(250),
-    `revenue` INT
+    `location` VARCHAR(250)
 );
 
 LOAD DATA LOCAL INFILE '/path/store.csv'
