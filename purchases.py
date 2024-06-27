@@ -4,22 +4,12 @@ import sys
 from datetime import datetime, timedelta
 
 
-def gen_IDnumber(start= 20000, end= 30000):
-    available_numbers = list(range(start, end + 1))
-    random.shuffle(available_numbers)
-    for number in available_numbers:
-        yield number
-
-cID = gen_IDnumber()
+count = 20000
 
 def gen_transactionID():
-    global cID
-    try:
-        line = next(cID)
-        return line
-    except StopIteration:
-        # if all numbers are exhausted
-        return "No more unique customer IDs available."
+    global count
+    count += 1
+    return count
 
 
 def gen_date():
