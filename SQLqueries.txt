@@ -133,53 +133,59 @@ REFERENCES `item`(`item_id`);
 DML(INSERT, UPDATE, DELETE) QUERIES:
 --------------------------------------------------------------------------------------------------------
 
- //INSERT (Adding a customer to the database)
+// Customer
+
+//INSERT (Adding a customer to the database)
 
 INSERT INTO `customer` (customer_id, name, birth_date, phone_number, email, address)
-VALUES (1, 'Harry Goner', '1990-01-01', '123-456-7890', 'harry.g@example.com', '123 Elms Street');
+VALUES (1, 'Larry Peters', '2001-07-01', '123-456-7890', 'larry.pete@gmail.com', '123 Elms Street');
 
- //UPDATE (Updating a customers information in the database)
+
+//UPDATE (Updating a customers information in the database)
+    // example: updating name 
 
 UPDATE `customer`
 SET `name` = 'Maria Lamb'
-WHERE `customer_id` = 11907;
+WHERE `customer_id` = 1;
+
+
+// DELETE (Deleting a customer from the database)
+    // Due to Foreign Key constrains we can't delete a customer from the database, because that customer is linked to a purchase history
+
+DELETE FROM customer
+    WHERE customer_id = 1;
+
+---------------------------------------------
+
+// Store
 
 // INSERT (Adding a store to the database)
 
-INSERT INTO store ( 
-    store_id,  
-    store_name, 
-    manager_id, 
-    location, 
-    revenue) 
-    values( 
-    20, 
-    'Water Equipment Galore', 
-    511,
-    '89 Hilltop Rd Saanich BC A2B2B3', 
-    33000);
+INSERT INTO `store` (store_id, store_name, manager_id, location, revenue) 
+    VALUES(20, 'Water Equipment Galore', 511,'89 Hilltop Rd Saanich BC A2B2B3', 33000);
 
-// INSERT (Adding a customer to the database)
+//UPDATE (Updating a store information in the database)
+    // example: updating address 
 
-INSERT INTO customer ( 
-customer_id, name, 
-birth_date, 
-phone_number, 
-email, 
-address) 
-values( 12569, 
-'Larry Peters', 
-'2001-07-01', 
-'(250)8831108', 
-'helloword@gmail.com', 
-'459 Vector Road Kelowna BC V5P2A7');
+UPDATE `store`
+SET `location` = '456 Elms Street'
+WHERE `store_id` = 501;
 
-// DELETE (Deleting a customer from the database)
+---------------------------------------------
 
-DELETE FROM customer
-    WHERE customer_id = 12569;
-        
+// Items
 
+// INSERT (Adding an item to the database)
+
+INSERT INTO `item` (item_id, item_name, price, cost) 
+    VALUES(9998, 'Rubber Ducky Yellow', 5, 2);
+
+//UPDATE (Updating an item information in the database)
+    // example: updating price 
+
+UPDATE `item`
+SET `price` = 6
+WHERE `store_id` = 9998;
 
 
 COMPLEX QUERIES FOR OUR SYSTEM:
