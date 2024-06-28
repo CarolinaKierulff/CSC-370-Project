@@ -74,18 +74,30 @@ CREATE TABLE `stock`(
     `quantity` INT
 );
 
-LOAD DATA LOCAL INFILE '/path/Uploads/stock.csv'
+LOAD DATA LOCAL INFILE '/path/stock.csv'
 INTO TABLE `stock`
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
+CREATE TABLE `managers`(
+    `manager_id` INT,
+    `store_id` INT,
+    `manager_name` VARCHAR(180),
+    `mysql_username` VARCHAR(180)
+);
+
+LOAD DATA LOCAL INFILE '/path/managers.csv'
+INTO TABLE `managers`
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
 
 
 GENERATING KEYS:
 --------------------------------------------------------------------------------------------------------
-
 
 // Primary Keys::
 
@@ -130,6 +142,42 @@ ADD CONSTRAINT `fk_item_id_stock`
 FOREIGN KEY (`item_id`) 
 REFERENCES `item`(`item_id`);
 
+
+Role-based access control (RBAC):
+--------------------------------------------------------------------------------------------------------
+
+// CREATING USERS (from the 10 managers from the managers table)
+
+CREATE USER 'JaredLeigh91'@'localhost' IDENTIFIED WITH mysql_native_password BY '{SecretPassword!1}';
+CREATE USER 'EmHawk98'@'localhost' IDENTIFIED WITH mysql_native_password BY '{SecretPassword!2}';
+CREATE USER 'NoahWin24'@'localhost' IDENTIFIED WITH mysql_native_password BY '{SecretPassword!3}';
+CREATE USER 'SophMercer'@'localhost' IDENTIFIED WITH mysql_native_password BY '{SecretPassword!4}';
+CREATE USER 'LiamMonty87'@'localhost' IDENTIFIED WITH mysql_native_password BY '{SecretPassword!5}';
+CREATE USER 'AvaKen23'@'localhost' IDENTIFIED WITH mysql_native_password BY '{SecretPassword!6}';
+CREATE USER 'EthRad92'@'localhost' IDENTIFIED WITH mysql_native_password BY '{SecretPassword!7}';
+CREATE USER 'IzzyDray21'@'localhost' IDENTIFIED WITH mysql_native_password BY '{SecretPassword!8}';
+CREATE USER 'CalVoss90'@'localhost' IDENTIFIED WITH mysql_native_password BY '{SecretPassword!9}';
+CREATE USER 'MayaHollow99'@'localhost' IDENTIFIED WITH mysql_native_password BY '{SecretPassword!10}';
+
+// DELETING USER 
+
+DROP USER 'JaredLeigh91'@'localhost';
+
+// GRANTING PRIVILEGES
+
+GRANT ALL ON `customer`.* TO 'JaredLeigh91'@'localhost';
+GRANT ALL ON `item`.* TO 'JaredLeigh91'@'localhost';
+GRANT ALL ON `purchases`.* TO 'JaredLeigh91'@'localhost';
+
+// SHOWING GRANTS
+
+SHOW GRANTS FOR 'JaredLeigh91'@'localhost';
+
+// APPLY PRIVILEGES CHANGES IMMEDIATELY
+
+FLUSH PRIVILEGES;
+
+
 DML(INSERT, UPDATE, DELETE) QUERIES:
 --------------------------------------------------------------------------------------------------------
 
@@ -152,8 +200,8 @@ WHERE `customer_id` = 1;
 // DELETE (Deleting a customer from the database)
     // Due to Foreign Key constrains we can't delete a customer from the database, because that customer is linked to a purchase history
 
-DELETE FROM customer
-    WHERE customer_id = 1;
+DELETE FROM `customer`
+    WHERE `customer_id` = 1;
 
 ---------------------------------------------
 
@@ -164,7 +212,7 @@ DELETE FROM customer
 INSERT INTO `store` (store_id, store_name, manager_id, location, revenue) 
     VALUES(20, 'Water Equipment Galore', 511,'89 Hilltop Rd Saanich BC A2B2B3', 33000);
 
-//UPDATE (Updating a store information in the database)
+// UPDATE (Updating a store information in the database)
     // example: updating address 
 
 UPDATE `store`
@@ -180,17 +228,36 @@ WHERE `store_id` = 501;
 INSERT INTO `item` (item_id, item_name, price, cost) 
     VALUES(9998, 'Rubber Ducky Yellow', 5, 2);
 
-//UPDATE (Updating an item information in the database)
+// UPDATE (Updating an item information in the database)
     // example: updating price 
 
 UPDATE `item`
 SET `price` = 6
 WHERE `store_id` = 9998;
 
+// Purchase
+
+// INSERT (Adding a new purchase to the database)
+
+    >>> using transactions (since we need to uptade the stock at the same time)
+
+
+ACID TRANSACTIONS:
+--------------------------------------------------------------------------------------------------------
+
+START TRANSACTION;
+INSERT INTO `purchases` (purchase_id, customer_id, item_id, store_id, date) 
+VALUES
+    (21001, 10442, 1103, '001', '2024-06-25'),
+    (21001, 10442, 1078, '001', '2024-06-25'),
+    (21001, 10442, 1100, '001', '2024-06-25');
+UPDATE `stock` 
+SET quantity = quantity - 1  
+WHERE store_id = '001' AND item_id IN (1103, 1078, 1100);
+COMMIT;
 
 COMPLEX QUERIES FOR OUR SYSTEM:
 --------------------------------------------------------------------------------------------------------
-
 
 // Top selling products:: 
 
@@ -284,7 +351,6 @@ ORDER BY total_spent DESC;
 
 SUB QUERIES FOR OUR SYSTEM:
 --------------------------------------------------------------------------------------------------------
-
 
 // Customers who have made purchases in a specific store::
 
