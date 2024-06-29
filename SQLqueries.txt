@@ -142,6 +142,17 @@ ADD CONSTRAINT `fk_item_id_stock`
 FOREIGN KEY (`item_id`) 
 REFERENCES `item`(`item_id`);
 
+Generating Indexes:
+--------------------------------------------------------------------------------------------------------
+
+CREATE INDEX `idx_customer_count` ON `customer`(`customer_id`);
+
+CREATE INDEX `idx_store_count` ON `store`(`store_id`);
+
+CREATE INDEX `Idx_item_count` ON `item`(`item_id`, `name`, `price`);
+
+CREATE INDEX `idx_purchase_count` ON `purchases`(`purchase_id`, `customer_id`, `item_id`, `store_id`);
+
 
 Role-based access control (RBAC):
 --------------------------------------------------------------------------------------------------------
