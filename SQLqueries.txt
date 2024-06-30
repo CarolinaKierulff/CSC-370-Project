@@ -61,6 +61,19 @@ CREATE TABLE `purchases`(
     `date` DATE
 );
 
+    //// adding primary key, foreign keys and restrictions directly to table creation
+
+CREATE TABLE Purchase (
+    `purchase_id` INT PRIMARY KEY,
+    `customer_id` INT,
+    `item_id` INT,
+    `store_id` INT,
+    `date` DATE,
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE RESTRICT,
+    FOREIGN KEY (item_id) REFERENCES item(item_id) ON DELETE RESTRICT,
+    FOREIGN KEY (store_id) REFERENCES store(store_id) ON DELETE RESTRICT
+);
+
 LOAD DATA LOCAL INFILE '/path/purchases.csv'
 INTO TABLE `purchases`
 FIELDS TERMINATED BY ','
