@@ -256,6 +256,8 @@ WHERE `store_id` = 9998;
 ACID TRANSACTIONS:
 --------------------------------------------------------------------------------------------------------
 
+// Updating stock of item and purchase of item simultaneously 
+
 START TRANSACTION;
 INSERT INTO `purchases` (purchase_id, customer_id, item_id, store_id, date) 
 VALUES
@@ -266,6 +268,36 @@ UPDATE `stock`
 SET quantity = quantity - 1  
 WHERE store_id = '001' AND item_id IN (1103, 1078, 1100);
 COMMIT;
+
+// Updating stock of item but only if there is stock available 
+
+DELIMITER $$
+
+CREATE PROCEDURE purchase_item()
+BEGIN
+    DECLARE itemQuantity INT DEFAULT 0;
+
+    START TRANSACTION;
+
+    SELECT quantity INTO itemQuantity
+    FROM stock
+    WHERE store_id = '001' AND item_id = 1141;
+
+    IF itemQuantity > 0 THEN 
+        INSERT INTO purchases (purchase_id, customer_id, item_id, store_id, date) 
+        VALUES (21002, 10442, 1141, '001', '2024-06-25');
+        
+        UPDATE stock
+        SET quantity = quantity - 1
+        WHERE store_id = '001' AND item_id IN (1141);
+    
+        COMMIT;
+    ELSE 
+        ROLLBACK;
+    END IF;
+END$$
+
+DELIMITER ;
 
 COMPLEX QUERIES FOR OUR SYSTEM:
 --------------------------------------------------------------------------------------------------------
