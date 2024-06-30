@@ -153,6 +153,28 @@ CREATE INDEX `Idx_item_count` ON `item`(`item_id`, `name`, `price`);
 
 CREATE INDEX `idx_purchase_count` ON `purchases`(`purchase_id`, `customer_id`, `item_id`, `store_id`);
 
+Creating Views:
+--------------------------------------------------------------------------------------------------------
+
+// managers of stores with revenue greater than $30,000
+
+CREATE VIEW `managers` AS
+	SELECT * FROM `store` WHERE revenue > 30000;
+
+// Customers located in the city of Richmond
+
+CREATE VIEW `RichmondCustomers` AS 
+	SELECT `customer_id`, `address` FROM `customer` WHERE address LIKE '%Richmond%';
+
+// Customers located in the city of Victoria
+
+CREATE VIEW `VictoriaCustomers` AS 
+	SELECT `customer_id`, `address` FROM `customer` WHERE address LIKE '%Victoria%';
+
+// Items with value of $1000 or greater
+
+CREATE VIEW `HighEndItems` AS SELECT `item_id`, `price` FROM `item` WHERE price > 999;
+
 
 Role-based access control (RBAC):
 --------------------------------------------------------------------------------------------------------
