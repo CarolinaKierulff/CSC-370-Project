@@ -413,6 +413,100 @@ GROUP BY `customer`.`customer_id`, `customer`.`name`
 HAVING SUM(`item`.`price`) > 1000
 ORDER BY total_spent DESC;
 
+Complex Queries for our System as Views:
+--------------------------------------------------------------------------------------------------------
+
+// top selling products
+
+CREATE VIEW `top_item_profits` AS
+SELECT `item_name`, `price`, `cost`, (`price` - `cost`) AS `profit`
+FROM `item`
+ORDER BY `profit` DESC
+LIMIT 5;
+
+
+// highest yielding purchases
+
+CREATE VIEW `top_purchase_profits` AS
+SELECT `purchases`.`purchase_id`,  
+    SUM(`item`.`price` - `item`.`cost`) AS total_profit
+FROM `purchases`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+GROUP BY `purchases`.`purchase_id`
+ORDER BY total_profit DESC
+LIMIT 5;
+
+// highest yielding customer
+
+CREATE VIEW `top_customers` AS
+SELECT `customer`.`customer_id`, `customer`.`name`, 
+    SUM(`item`.`price` - `item`.`cost`) AS total_spent
+FROM `customer`
+JOIN `purchases` ON `customer`.`customer_id` = `purchases`.`customer_id`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+GROUP BY `customer`.`customer_id`, `customer`.`name`
+ORDER BY total_spent DESC
+LIMIT 5;
+
+// store revenue
+
+CREATE VIEW `store_revenue` AS
+SELECT `store`.`store_id`, `store`.`store_name`,
+    SUM(`item`.`price`) AS total_revenue
+FROM `store`
+JOIN `purchases` ON `store`.`store_id` = `purchases`.`store_id`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+GROUP BY `store`.`store_id`, `store`.`store_name`;
+
+SELECT * FROM `store_revenue` WHERE `store_id` = 9;
+
+// monthly sales
+
+CREATE VIEW `monthly_sales` AS
+SELECT
+    YEAR(`purchases`.`date`) AS sales_year,
+    MONTH(`purchases`.`date`) AS sales_month,
+    SUM(`item`.`price`) AS total_sales
+FROM `purchases`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+GROUP BY YEAR(`purchases`.`date`), MONTH(`purchases`.`date`)
+ORDER BY total_sales DESC;
+
+// top customer by date
+
+CREATE VIEW `top_customers` AS
+SELECT `customer`.`customer_id`, `customer`.`name`, 
+    SUM(`item`.`price` - `item`.`cost`) AS total_spent
+FROM `customer`
+JOIN `purchases` ON `customer`.`customer_id` = `purchases`.`customer_id`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+WHERE `purchases`.`date` BETWEEN '2023-01-01' AND '2023-12-31'
+GROUP BY `customer`.`customer_id`, `customer`.`name`
+ORDER BY total_spent DESC
+LIMIT 5;
+
+// customer purchases
+
+CREATE VIEW `customer_purchases` AS
+SELECT `purchases`.`purchase_id`, `purchases`.`purchase_date`,
+    SUM(`item`.`price`) AS total_price
+FROM `purchases`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+JOIN `customer` ON `purchases`.`customer_id` = `customer`.`customer_id`
+GROUP BY `purchases`.`purchase_id`, `purchases`.`purchase_date`
+ORDER BY `purchases`.`purchase_date` DESC;
+
+// customer spending
+
+CREATE VIEW `customer_spending` AS
+SELECT `customer`.`customer_id`, `customer`.`name`, 
+    SUM(`item`.`price`) AS total_spent
+FROM `customer`
+JOIN `purchases` ON `customer`.`customer_id` = `purchases`.`customer_id`
+JOIN `item` ON `purchases`.`item_id` = `item`.`item_id`
+GROUP BY `customer`.`customer_id`, `customer`.`name`
+HAVING SUM(`item`.`price`) > 1000
+ORDER BY total_spent DESC;
 
 SUB QUERIES FOR OUR SYSTEM:
 --------------------------------------------------------------------------------------------------------
