@@ -10,7 +10,7 @@ CREATE DATABASE `storemanagerdb`;
 USE `storemanagerdb`;
 
 CREATE TABLE `customer`(
-    `customer_id` INT,
+    `customer_id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(180),
     `birth_date` DATE,
     `phone_number` VARCHAR(20),
@@ -26,7 +26,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
 CREATE TABLE `item`(
-    `item_id` INT,
+    `item_id` INT AUTO_INCREMENT PRIMARY KEY,
     `item_name` VARCHAR(180),
     `price` INT,
     `cost` FLOAT
@@ -40,7 +40,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
 CREATE TABLE `store`(
-    `store_id` INT,
+    `store_id` INT PRIMARY KEY,
     `store_name` VARCHAR(180),
     `manager_id` INT,
     `location` VARCHAR(250)
@@ -54,7 +54,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
 CREATE TABLE `purchases`(
-    `purchase_id` INT,
+    `purchase_id` INT AUTO_INCREMENT PRIMARY KEY,
     `customer_id` INT,
     `item_id` INT,
     `store_id` INT,
@@ -64,7 +64,7 @@ CREATE TABLE `purchases`(
     //// adding primary key, foreign keys and restrictions directly to table creation
 
 CREATE TABLE Purchase (
-    `purchase_id` INT PRIMARY KEY,
+    `purchase_id` AUTO_INCREMENT PRIMARY KEY,
     `customer_id` INT,
     `item_id` INT,
     `store_id` INT,
