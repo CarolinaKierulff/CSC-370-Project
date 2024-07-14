@@ -155,6 +155,46 @@ ADD CONSTRAINT `fk_item_id_stock`
 FOREIGN KEY (`item_id`) 
 REFERENCES `item`(`item_id`);
 
+
+ADDING A SUBSET: 
+--------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE safety_equipment (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    `item_name` VARCHAR(180),
+    `price` INT,
+    `cost` FLOAT,
+    FOREIGN KEY (`item_id`) REFERENCES `item`(`item_id`)
+);
+
+
+INSERT INTO safety_equipment (item_id, item_name, price, cost)
+SELECT item_id, item_name, price, cost
+FROM item
+WHERE `item_name` LIKE '%Life Jacket%' 
+   OR `item_name` LIKE '%Personal Flotation Device%' 
+   OR `item_name` LIKE '%Marine Safety Equipment%' 
+   OR `item_name` LIKE '%Snorkel Vest%';
+
+
+ALTER TABLE safety_equipment ADD COLUMN warranty_period INT;
+
+UPDATE safety_equipment
+SET warranty_period = 12
+WHERE item_name LIKE '%Life Jacket%';
+UPDATE safety_equipment
+SET warranty_period = 32
+WHERE item_name LIKE '%Personal Flotation Device%';
+UPDATE safety_equipment
+SET warranty_period = 32
+WHERE item_name LIKE '%Marine Safety Equipment%';
+UPDATE safety_equipment
+SET warranty_period = 48
+WHERE item_name LIKE '%Snorkel Vest%';
+
+
+
 Generating Indexes:
 --------------------------------------------------------------------------------------------------------
 
