@@ -356,7 +356,8 @@ BEGIN
 
     SELECT quantity INTO itemQuantity
     FROM stock
-    WHERE store_id = '001' AND item_id = 1141;
+    WHERE store_id = '001' AND item_id = 1141
+    FOR UPDATE;
 
     IF itemQuantity > 0 THEN 
         INSERT INTO purchases (purchase_id, customer_id, item_id, store_id, date) 
@@ -373,6 +374,43 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+---------------	 // Updating our transaction to take arguments and ensures isolation
+
+DELIMITER $$
+
+CREATE PROCEDURE purchase_item(IN which_item INT, IN which_customer INT, IN which_store VARCHAR(10))
+BEGIN
+    DECLARE itemQuantity INT DEFAULT 0;
+    DECLARE current_purchase_id INT;
+
+    START TRANSACTION;
+
+    SELECT MAX(purchase_id) + 1 INTO current_purchase_id
+    FROM purchases;
+
+    SELECT quantity INTO itemQuantity
+    FROM stock
+    WHERE store_id = which_store AND item_id = which_item
+    FOR UPDATE;
+
+    IF itemQuantity > 0 THEN 
+        INSERT INTO purchases (purchase_id, customer_id, item_id, store_id, date) 
+        VALUES (current_purchase_id, which_customer, which_item, which_store, CURDATE());
+        
+        UPDATE stock
+        SET quantity = quantity - 1
+        WHERE store_id = which_store AND item_id = which_item;
+    
+        COMMIT;
+    ELSE 
+        ROLLBACK;
+    END IF;
+END$$
+
+DELIMITER ;
+
+
 
 COMPLEX QUERIES FOR OUR SYSTEM:
 --------------------------------------------------------------------------------------------------------
