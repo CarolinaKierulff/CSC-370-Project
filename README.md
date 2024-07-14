@@ -8,9 +8,9 @@ So far we have added all the files that generate randomized data for our databas
    
    | File              | Generates                        | Attributes                                               |
    | ----------------- | -------------------------------- | -------------------------------------------------------- |
-   | > customer.py     | Customer data: customer. csv     | customerId, name, birthDate, phoneNumber, email, address |
-   | > item.py         | Item data: item.csv              | itemId, name, price                                      |
-   | > store.py        | Store data: store.csv            | storeId, storeName, managerId, location, revenue         |
-   | > purchases.py    | Purchase data: purchases.csv     | purchaseId, customersId, itemID, date                    |
-   | > stock.py        | Stock data: stock.csv            | storeId, itemID, quantity                                |
+   | customer.py     | Customer data: customer. csv     | customerId, name, birthDate, phoneNumber, email, address |
+   | item.py         | Item data: item.csv              | itemId, name, price                                      |
+   | store.py        | Store data: store.csv            | storeId, storeName, managerId, location, revenue         |
+   | purchases.py    | Purchase data: purchases.csv     | purchaseId, customersId, itemID, date                    |
+   | stock.py        | Stock data: stock.csv            | storeId, itemID, quantity                                |
    
