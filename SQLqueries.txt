@@ -633,3 +633,22 @@ WHERE NOT EXISTS (
     FROM `purchases`
     WHERE `purchases`.`customer_id` = `customer`.`customer_id`
 );
+
+Simplified Sub Queries
+--------------------------------------------------------------------------
+
+// Customers who have made purchases in a specific store::
+
+SELECT `customer_id`, `name`
+FROM `customer` 
+JOIN `purchases` ON `customer`.`customer_id` = `purchases`.`customer_id`
+WHERE `purchases`.`store_id` = 1;
+
+// Customers who have never made a purchase::
+
+SELECT `customer_id`, `name`
+FROM `customer`
+LEFT JOIN `purchases` ON `customer`.`customer_id` = `purchases`.`customer_id`
+WHERE `purchases`.`customer_id` IS NULL;
+
+
